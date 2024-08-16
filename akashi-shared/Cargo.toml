@@ -1,0 +1,11 @@
+[package]
+name = "akashi-shared"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+poise = { workspace = true }
+dashmap = { workspace = true }
+reqwest = { workspace = true }
+tracing = { workspace = true }
+akashi-cache = { path = "../akashi-cache" }

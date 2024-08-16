@@ -1,0 +1,13 @@
+[package]
+name = "akashi-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+dotenvy = { workspace = true }
+poise = { workspace = true }
+akashi-shared = { path = "../akashi-shared" }
+akashi-cmds = { path = "../akashi-cmds" }

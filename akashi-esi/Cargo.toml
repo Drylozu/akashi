@@ -1,0 +1,9 @@
+[package]
+name = "akashi-esi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+poise = { workspace = true }
+tokio = { workspace = true }
+akashi-shared = { path = "../akashi-shared" }

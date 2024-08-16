@@ -1,0 +1,21 @@
+[workspace]
+members = [
+    "akashi-cache", "akashi-cmds",
+    "akashi-core", "akashi-esi",
+    "akashi-shared"
+]
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+
+[workspace.dependencies]
+tokio = { version = "1.39.2", features = ["rt", "rt-multi-thread", "macros"] }
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"
+dotenvy = "0.15.7"
+poise = { git = "https://github.com/serenity-rs/poise", branch = "current" }
+dashmap = "6.0.1"
+reqwest = "0.12.5"
