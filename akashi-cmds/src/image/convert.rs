@@ -1,8 +1,8 @@
+use akashi_esi::job::SicJob;
 use akashi_shared::utils::image::parse_command_image;
 use akashi_shared::{AkashiContext, AkashiErr};
 use poise::serenity_prelude::Attachment;
 use poise::ChoiceParameter;
-use akashi_esi::job::SicJob;
 
 #[derive(Debug, poise::ChoiceParameter)]
 enum FormatChoice {

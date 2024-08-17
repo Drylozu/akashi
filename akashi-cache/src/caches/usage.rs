@@ -18,9 +18,7 @@ impl UsageCache {
     }
 
     pub fn get(&self, command: String) -> Option<i32> {
-        self.cache
-            .get(&command)
-            .map(|v| v.value().clone())
+        self.cache.get(&command).map(|v| v.value().clone())
     }
 
     pub fn ordered_entries(&self) -> Vec<(String, i32)> {

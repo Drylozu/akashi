@@ -10,4 +10,5 @@ pub struct AkashiData {
 }
 
 pub mod framework;
+pub mod strings;
 pub mod utils;

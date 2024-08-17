@@ -44,13 +44,15 @@ pub async fn fetch_image(data: &AkashiData, url: String) -> Result<Response, Aka
 }
 
 pub async fn parse_media_response(response: Response) -> Result<(Vec<u8>, String), AkashiErr> {
-    let content_type = format_content_type(response
-        .headers()
-        .get(CONTENT_TYPE)
-        .ok_or_else(|| AkashiErr::from("Content-Type header missing"))?
-        .to_str()
-        .map_err(AkashiErr::from)?
-        .to_string());
+    let content_type = format_content_type(
+        response
+            .headers()
+            .get(CONTENT_TYPE)
+            .ok_or_else(|| AkashiErr::from("Content-Type header missing"))?
+            .to_str()
+            .map_err(AkashiErr::from)?
+            .to_string(),
+    );
 
     let bytes = response
         .bytes()
