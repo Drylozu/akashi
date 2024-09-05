@@ -9,9 +9,7 @@
 ## 🔧 Features
 
 - 🖼️ _Fast_ image manipulation
-
-## Third-party primary techs
-`todo!()`
+- 🔧 Code execution featuring Piston engine
 
 ## ⚠️ Disclaimer
 Akashi is licensed under a [GNU AGPLv3](/LICENSE), please note that before copying my sweet bot
@@ -24,6 +22,9 @@ I do **NOT** provide support for self-hosted instances of Akashi, mine works mir
 ## ✒️ Credits or sum
 
 Akashi is heavily inspired on [Assyst](https://github.com/Jacherr/Assyst2) (best bot), which I recommend using instead of Akashi, bc yes.
+
+## Tf is Akashi for?
+Akashi is a *technical* Discord bot for *technical* or developer users.
 
 ## 🔥 Support
 *Akashi isn't malfunctioning, right?*

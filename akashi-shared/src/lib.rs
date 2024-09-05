@@ -7,6 +7,7 @@ pub type AkashiContext<'a> = poise::Context<'a, AkashiData, AkashiErr>;
 pub struct AkashiData {
     pub caches: Arc<Mutex<akashi_cache::caches::Cache>>,
     pub req: Arc<Mutex<reqwest::Client>>,
+    pub sysinfo: Arc<Mutex<sysinfo::System>>,
 }
 
 pub mod framework;

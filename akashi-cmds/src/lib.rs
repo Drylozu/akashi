@@ -1,5 +1,6 @@
 mod image;
 mod info;
+mod util;
 
 use akashi_shared::{AkashiData, AkashiErr};
 
@@ -16,5 +17,5 @@ macro_rules! register_commands {
 }
 
 pub fn register_all_commands() -> Vec<poise::Command<AkashiData, AkashiErr>> {
-    register_commands!(info, image)
+    register_commands!(info, image, util)
 }

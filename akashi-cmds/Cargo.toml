@@ -6,5 +6,8 @@ edition = "2021"
 [dependencies]
 poise = { workspace = true }
 tokio = { workspace = true }
+pistones = { workspace = true }
+sysinfo = { workspace = true }
+dashmap = { workspace = true }
 akashi-shared = { path = "../akashi-shared" }
 akashi-esi = { path = "../akashi-esi" }

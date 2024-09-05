@@ -1,8 +1,7 @@
-mod help;
-mod stats;
+mod piston;
 
 use akashi_shared::{AkashiData, AkashiErr};
 
 pub fn register() -> Vec<poise::Command<AkashiData, AkashiErr>> {
-    vec![help::help(), stats::stats()]
+    vec![piston::piston()]
 }

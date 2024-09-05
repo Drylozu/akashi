@@ -32,6 +32,10 @@ impl UsageCache {
         entries
     }
 
+    pub fn total_usages(&self) -> i32 {
+        self.cache.iter().map(|entry| *entry.value()).sum()
+    }
+
     pub fn clear(&self) {
         self.cache.clear();
     }

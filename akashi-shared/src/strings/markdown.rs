@@ -17,6 +17,7 @@ pub trait Markdown {
     fn escape_strikethrough(&self) -> String;
     fn escape_underline(&self) -> String;
 
+    fn tiny(&self) -> String;
     fn italics(&self) -> String;
     fn bold(&self) -> String;
     fn codestring(&self) -> String;
@@ -113,6 +114,10 @@ where
             .unwrap()
             .replace_all(&cut(self, 1996), r"\_\_")
             .into_owned()
+    }
+
+    fn tiny(&self) -> String {
+        format!("-# {}", self.escape_italics())
     }
 
     fn italics(&self) -> String {

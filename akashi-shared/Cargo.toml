@@ -9,4 +9,5 @@ dashmap = { workspace = true }
 reqwest = { workspace = true }
 tracing = { workspace = true }
 regex = { workspace = true }
+sysinfo = { workspace = true }
 akashi-cache = { path = "../akashi-cache" }

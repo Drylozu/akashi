@@ -35,7 +35,12 @@ enum FormatChoice {
 }
 
 /// Convert an image to desired format
-#[poise::command(slash_command, prefix_command, category = "Image")]
+#[poise::command(
+    slash_command,
+    prefix_command,
+    category = "Image",
+    install_context = "Guild|User"
+)]
 pub async fn convert(
     ctx: AkashiContext<'_>,
     #[description = "New format"] format: FormatChoice,

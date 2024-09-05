@@ -91,9 +91,16 @@ impl SicJob {
         self
     }
 
+    /// Inverts colors
+    pub fn invert(&mut self) -> &mut Self {
+        self.cmd.args(&["--invert"]);
+        self
+    }
+
     /// Speech balloon
     pub fn speech(&mut self) -> &mut Self {
         self.cmd
+            // todo: make dynamic dir
             .args(&["--speech", "./akashi-esi/assets/speech.png"]);
         self
     }
@@ -109,7 +116,10 @@ impl SicJob {
 
             ctx.send(
                 CreateReply::default()
-                    .content(format!("Took {:.2}ms", self.start.elapsed().as_millis()))
+                    .content(format!(
+                        "-# *Took __{:.2}ms__*",
+                        self.start.elapsed().as_millis()
+                    ))
                     .attachment(attachment),
             )
             .await?;

@@ -4,7 +4,12 @@ use akashi_shared::{AkashiContext, AkashiErr};
 use poise::serenity_prelude::Attachment;
 
 /// Place a speech balloon on top of an image
-#[poise::command(slash_command, prefix_command, category = "Image")]
+#[poise::command(
+    slash_command,
+    prefix_command,
+    category = "Image",
+    install_context = "Guild|User"
+)]
 pub async fn speech(
     ctx: AkashiContext<'_>,
     #[description = "Image url"] url: Option<String>,

@@ -87,7 +87,11 @@ pub async fn parse_command_image(
         let bytes = attachment.download().await?;
         let format = match attachment.content_type {
             Some(content_type) => format_content_type(content_type),
-            None => return Err(AkashiErr::from("No content type")),
+            None => {
+                return Err(AkashiErr::from(
+                    "Attachment returned an invalid `Content-Type` header",
+                ))
+            }
         };
 
         return Ok((bytes, format));
@@ -109,5 +113,7 @@ pub async fn parse_command_image(
         return Ok((bytes, content_type));
     }
 
-    Err(AkashiErr::from("No media found"))
+    Err(AkashiErr::from(
+        "I couldn't find any media cached or provided",
+    ))
 }

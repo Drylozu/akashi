@@ -68,6 +68,7 @@ pub fn initialize_poise_framework(
 
 pub fn initialize_data() -> AkashiData {
     AkashiData {
+        sysinfo: Arc::new(Mutex::new(sysinfo::System::new())),
         caches: Arc::new(Mutex::new(initialize_cache())),
         req: Arc::new(Mutex::new(reqwest::Client::new())),
     }

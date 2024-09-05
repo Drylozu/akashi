@@ -1,6 +1,7 @@
 /*!
     The following code is part of the [Assyst2 repo](https://github.com/Jacherr/assyst2)
     Which is licensed under [MIT LICENSE](https://github.com/Jacherr/assyst2/blob/3ae4f7095a3ea38fd637541c48ca9e31e90e09d6/LICENSE)
+
     TL;DR: Please Jacherr don't sue me.
 */
 
@@ -14,46 +15,38 @@ fn get_longer_str<'a>(a: &'a str, b: &'a str) -> &'a str {
 }
 
 /// Generates a table given a list of tuples containing strings
-pub fn key_value(input: &[(impl AsRef<str>, impl AsRef<str>)]) -> String {
-    let longest: &str = input
-        .iter()
-        .map(|(x, y)| (x.as_ref(), y.as_ref()))
-        .fold(input[0].0.as_ref(), |previous, (current, _)| {
-            get_longer_str(previous, current)
-        });
-
-    input
-        .iter()
-        .map(|(key, value)| {
-            format!(
-                "{}{}: {}\n",
-                " ".repeat(longest.len() - key.as_ref().len()),
-                key.as_ref(),
-                value.as_ref()
-            )
-        })
-        .fold(String::new(), |a, b| a + &b)
-}
-
-/// Generates a table given a list of tuples containing strings
-pub fn generate_table<T: AsRef<str>>(input: &[(T, T)]) -> String {
+pub fn generate_table<T: AsRef<str>>(input: &[(T, T)], reverse: bool) -> String {
     let longest: &str = input
         .iter()
         .fold(input[0].0.as_ref(), |previous, (current, _)| {
             get_longer_str(previous, current.as_ref())
         });
 
-    input
-        .iter()
-        .map(|(key, value)| {
-            format!(
-                "{}{}: {}\n",
-                " ".repeat(longest.len() - key.as_ref().len()),
-                key.as_ref(),
-                value.as_ref()
-            )
-        })
-        .fold(String::new(), |a, b| a + &b)
+    if reverse {
+        input
+            .iter()
+            .map(|(key, value)| {
+                format!(
+                    "{}{}: {}\n",
+                    key.as_ref(),
+                    " ".repeat(longest.len() - key.as_ref().len()),
+                    value.as_ref()
+                )
+            })
+            .fold(String::new(), |a, b| a + &b)
+    } else {
+        input
+            .iter()
+            .map(|(key, value)| {
+                format!(
+                    "{}{}: {}\n",
+                    " ".repeat(longest.len() - key.as_ref().len()),
+                    key.as_ref(),
+                    value.as_ref()
+                )
+            })
+            .fold(String::new(), |a, b| a + &b)
+    }
 }
 
 /// Generates a list given a list of tuples containing strings
