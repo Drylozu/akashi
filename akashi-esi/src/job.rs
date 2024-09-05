@@ -46,7 +46,7 @@ impl SicJob {
         let temp_dir = temp_dir();
 
         #[cfg(target_os = "linux")]
-        let temp_dir = TempDir::new("sic").unwrap().path().into_path_buf();
+        let temp_dir = TempDir::new("sic").unwrap().path().to_path_buf();
 
         let file_path = temp_dir.join(&name);
 
