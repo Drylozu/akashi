@@ -12,7 +12,7 @@ use tokio::io::AsyncWriteExt;
 use std::env::temp_dir;
 
 #[cfg(target_os = "linux")]
-use tempdir::TempDir;
+use tempfile::tempdir;
 
 #[cfg(not(debug_assertions))]
 static SIC_EXECUTABLE: Lazy<String> =
@@ -46,7 +46,7 @@ impl SicJob {
         let temp_dir = temp_dir();
 
         #[cfg(target_os = "linux")]
-        let temp_dir = TempDir::new("sic").unwrap().path().to_path_buf();
+        let temp_dir = tempdir().map_err(AkashiErr::from).unwrap().path().to_path_buf();
 
         let file_path = temp_dir.join(&name);
 
