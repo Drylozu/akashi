@@ -2,12 +2,17 @@ use akashi_shared::{AkashiContext, AkashiErr};
 use once_cell::sync::Lazy;
 use poise::serenity_prelude::CreateAttachment;
 use poise::CreateReply;
-use std::env::temp_dir;
 use std::env::var;
 use std::path::PathBuf;
 use std::process::Command;
 use tokio::fs::File;
 use tokio::io::AsyncWriteExt;
+
+#[cfg(target_os = "windows")]
+use std::env::temp_dir;
+
+#[cfg(target_os = "linux")]
+use tempdir::TempDir;
 
 #[cfg(not(debug_assertions))]
 static SIC_EXECUTABLE: Lazy<String> =
@@ -36,7 +41,13 @@ pub struct SicJob {
 impl SicJob {
     pub fn new(format: String) -> Self {
         let name = format!("output.{}", format);
+
+        #[cfg(target_os = "windows")]
         let temp_dir = temp_dir();
+
+        #[cfg(target_os = "linux")]
+        let temp_dir = TempDir::new("sic").unwrap().path().into_path_buf();
+
         let file_path = temp_dir.join(&name);
 
         Self {
@@ -124,7 +135,6 @@ impl SicJob {
             )
             .await?;
 
-            self.temp_dir.clear();
             Ok(())
         } else {
             Err(AkashiErr::from(format!(

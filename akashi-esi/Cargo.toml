@@ -6,5 +6,6 @@ edition = "2021"
 [dependencies]
 poise = { workspace = true }
 tokio = { workspace = true }
-akashi-shared = { path = "../akashi-shared" }
 once_cell = { workspace = true }
+tempdir = { workspace = true }
+akashi-shared = { path = "../akashi-shared" }
