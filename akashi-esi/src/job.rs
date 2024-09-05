@@ -48,6 +48,9 @@ impl SicJob {
         #[cfg(target_os = "linux")]
         let temp_dir = tempdir().map_err(AkashiErr::from).unwrap().path().to_path_buf();
 
+        #[cfg(target_os = "linux")]
+        println!("Temp dir: {}", temp_dir.display());
+
         let file_path = temp_dir.join(&name);
 
         Self {
