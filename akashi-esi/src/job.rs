@@ -7,8 +7,8 @@ use std::path::PathBuf;
 use std::process::Command;
 use tokio::fs::File;
 use tokio::io::AsyncWriteExt;
-
 use std::env::temp_dir;
+use akashi_shared::strings::random::random_str;
 
 #[cfg(not(debug_assertions))]
 static SIC_EXECUTABLE: Lazy<String> =
@@ -36,10 +36,8 @@ pub struct SicJob {
 
 impl SicJob {
     pub fn new(format: String) -> Self {
-        let name = format!("output.{}", format);
-
+        let name = format!("{}.{}", random_str(5), format);
         let temp_dir = temp_dir();
-
         let file_path = temp_dir.join(&name);
 
         Self {

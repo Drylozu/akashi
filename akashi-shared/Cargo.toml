@@ -11,3 +11,4 @@ tracing = { workspace = true }
 regex = { workspace = true }
 sysinfo = { workspace = true }
 akashi-cache = { path = "../akashi-cache" }
+rand = "0.8.5"
