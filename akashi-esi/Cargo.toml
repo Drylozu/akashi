@@ -7,5 +7,4 @@ edition = "2021"
 poise = { workspace = true }
 tokio = { workspace = true }
 once_cell = { workspace = true }
-tempfile = { workspace = true }
 akashi-shared = { path = "../akashi-shared" }

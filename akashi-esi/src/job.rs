@@ -8,11 +8,7 @@ use std::process::Command;
 use tokio::fs::File;
 use tokio::io::AsyncWriteExt;
 
-#[cfg(target_os = "windows")]
 use std::env::temp_dir;
-
-#[cfg(target_os = "linux")]
-use tempfile::tempdir;
 
 #[cfg(not(debug_assertions))]
 static SIC_EXECUTABLE: Lazy<String> =
@@ -42,14 +38,7 @@ impl SicJob {
     pub fn new(format: String) -> Self {
         let name = format!("output.{}", format);
 
-        #[cfg(target_os = "windows")]
         let temp_dir = temp_dir();
-
-        #[cfg(target_os = "linux")]
-        let temp_dir = tempdir().map_err(AkashiErr::from).unwrap().path().to_path_buf();
-
-        #[cfg(target_os = "linux")]
-        println!("Temp dir: {}", temp_dir.display());
 
         let file_path = temp_dir.join(&name);
 

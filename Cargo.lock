@@ -67,7 +67,6 @@ dependencies = [
  "akashi-shared",
  "once_cell",
  "poise",
- "tempfile",
  "tokio",
 ]
 
